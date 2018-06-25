@@ -1,0 +1,26 @@
+{
+  "name": "purescript-dayjs",
+  "description": "[WIP!] PureScript bindings to the dayjs library",
+  "authors": [
+    {
+      "name": "Li Meng Jun",
+      "email": "lmjubuntu@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Lupino/purescript-dayjs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-effect": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lupino/purescript-dayjs.git"
+  }
+}
