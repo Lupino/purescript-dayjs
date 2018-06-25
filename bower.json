@@ -22,5 +22,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Lupino/purescript-dayjs.git"
+  },
+  "devDependencies": {
+    "purescript-test-unit": "^14.0.0"
   }
 }
