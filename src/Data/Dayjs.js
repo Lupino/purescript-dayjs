@@ -33,3 +33,9 @@ exports.format = function(formatStr) {
 exports.now = function() {
   return dayjs();
 };
+
+exports.dayjs = function(str) {
+  return function() {
+    return dayjs(str);
+  };
+};

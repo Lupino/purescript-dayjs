@@ -15,3 +15,5 @@ foreign import add :: forall a. a -> String -> Dayjs -> Dayjs
 foreign import format :: String -> Dayjs -> String
 
 foreign import now :: Effect Dayjs
+
+foreign import dayjs :: String -> Effect Dayjs
