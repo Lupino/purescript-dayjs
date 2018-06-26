@@ -2,7 +2,7 @@ module Test.Main where
 
 import Data.Dayjs
 
-import Prelude (Unit, discard, ($), (<), (==), (>))
+import Prelude (Unit, discard, ($), (<), (==), (>), show)
 import Test.Unit (suite, test)
 import Test.Unit.Assert (assert, assertFalse, equal)
 import Test.Unit.Main (runTest)
@@ -61,29 +61,35 @@ main = runTest do
     test "test dayjs operation" do
       let t = dayjs "2018-06-25 22:08:20"
 
-      equal 2019 $ year $ add 1 unitY t
-      equal 6 $ month $ add 1 unitM t
-      equal 26 $ date $ add 1 unitD t
-      equal 2 $ day $ add 1 unitD t
-      equal 23 $ hour $ add 1 unitH t
-      equal 1 $ millisecond $ add 1 unitMS t
-      equal 9 $ minute $ add 1 unitMIN t
-      equal 21 $ second $ add 1 unitS t
+      equal "2019-06-25 22:08:20" $ show $ add 1 unitY t
+      equal "2017-06-25 22:08:20" $ show $ subtract 1 unitY t
+      equal "2016-06-25 22:08:20" $ show $ set unitY 2016 t
 
-      equal 2017 $ year $ subtract 1 unitY t
-      equal 4 $ month $ subtract 1 unitM t
-      equal 24 $ date $ subtract 1 unitD t
-      equal 0 $ day $ subtract 1 unitD t
-      equal 21 $ hour $ subtract 1 unitH t
-      equal 999 $ millisecond $ subtract 1 unitMS t
-      equal 7 $ minute $ subtract 1 unitMIN t
-      equal 19 $ second $ subtract 1 unitS t
 
-      equal 1 $ year $ set unitY 1 t
-      equal 1 $ month $ set unitM 1 t
-      equal 1 $ date $ set unitDATE 1 t
-      -- equal 1 $ day $ set unitD 12 t
-      equal 1 $ hour $ set unitH 1 t
-      equal 1 $ millisecond $ set unitMS 1 t
-      equal 1 $ minute $ set unitMIN 1 t
-      equal 1 $ second $ set unitS 1 t
+      equal "2018-07-25 22:08:20" $ show $ add 1 unitM t
+      equal "2018-05-25 22:08:20" $ show $ subtract 1 unitM t
+      equal "2018-11-25 22:08:20" $ show $ set unitM 10 t
+
+      -- equal "2018-06-25 22:08:20" $ show $ add 2 unitDATE t
+      -- equal "2018-06-25 22:08:19" $ show $ subtract 2 unitDATE t
+      equal "2018-06-10 22:08:20" $ show $ set unitDATE 10 t
+
+      equal "2018-06-26 22:08:20" $ show $ add 1 unitD t
+      equal "2018-06-24 22:08:20" $ show $ subtract 1 unitD t
+      -- equal "2018-06-25 22:08:20" $ show $ set unitD 15 t
+
+      equal "2018-06-25 23:08:20" $ show $ add 1 unitH t
+      equal "2018-06-25 21:08:20" $ show $ subtract 1 unitH t
+      equal "2018-06-25 10:08:20" $ show $ set unitH 10 t
+
+      equal "2018-06-25 22:08:21" $ show $ add 1000 unitMS t
+      equal "2018-06-25 22:08:19" $ show $ subtract 1 unitMS t
+      equal "2018-06-25 22:08:30" $ show $ set unitMS 10000 t
+
+      equal "2018-06-25 22:09:20" $ show $ add 1 unitMIN t
+      equal "2018-06-25 22:07:20" $ show $ subtract 1 unitMIN t
+      equal "2018-06-25 22:10:20" $ show $ set unitMIN 10 t
+
+      equal "2018-06-25 22:08:21" $ show $ add 1 unitS t
+      equal "2018-06-25 22:08:19" $ show $ subtract 1 unitS t
+      equal "2018-06-25 22:08:10" $ show $ set unitS 10 t
